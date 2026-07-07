@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { cn } from '../lib/utils'
+import { asset, cn } from '../lib/utils'
 
 export interface LineInfo {
   id: string
@@ -154,7 +154,7 @@ export function PalmLineViewer({
 
 // Real illustrated palm artwork, blended to sit seamlessly on the warm paper.
 export function PalmArt({
-  src = '/art/palm-hand.png',
+  src = asset('/art/palm-hand.png'),
   alt = 'An illustrated open palm and its lines',
   className,
   blend = true,

@@ -10,15 +10,15 @@ import { generateFullReading } from '../lib/readings'
 import { SAMPLE_INPUT } from '../data/sampleReading'
 import { useStore } from '../lib/store'
 import type { Hand } from '../lib/types'
-import { cn } from '../lib/utils'
+import { asset, cn } from '../lib/utils'
 
 const HOME_LINES = [
-  { id: 'life', n: '01', label: 'Life Line', color: 'var(--sindoor)', art: '/art/palm_life_line_highlighted.png', blurb: 'Vitality, grounding, and the rhythm at which you meet the world — resilience, not merely length of years.' },
-  { id: 'head', n: '02', label: 'Head Line', color: 'var(--alta)', art: '/art/palm_head_line_highlighted.png', blurb: 'How your mind moves — the balance of logic and imagination, and the way you learn and decide.' },
-  { id: 'heart', n: '03', label: 'Heart Line', color: 'var(--ritual)', art: '/art/palm_heart_line_highlighted.png', blurb: 'Your emotional weather — how you attach, express affection, and hold or share what you feel.' },
-  { id: 'fate', n: '04', label: 'Fate Line', color: 'var(--gold-deep)', art: '/art/palm_fate_line_highlighted.png', blurb: 'Your relationship with direction and responsibility — the thread of purpose in your working life.' },
-  { id: 'sun', n: '05', label: 'Sun Line', color: 'var(--marigold)', art: '/art/palm_sun_line_highlighted.png', blurb: 'Creativity, confidence, and your relationship with being seen — the warmth others remember.' },
-  { id: 'mercury', n: '06', label: 'Mercury Line', color: 'var(--turmeric)', art: '/art/palm_mercury_line_highlighted.png', blurb: 'Communication, business instinct, and social intelligence — a quick, shrewd read of people.' },
+  { id: 'life', n: '01', label: 'Life Line', color: 'var(--sindoor)', art: asset('/art/palm_life_line_highlighted.png'), blurb: 'Vitality, grounding, and the rhythm at which you meet the world — resilience, not merely length of years.' },
+  { id: 'head', n: '02', label: 'Head Line', color: 'var(--alta)', art: asset('/art/palm_head_line_highlighted.png'), blurb: 'How your mind moves — the balance of logic and imagination, and the way you learn and decide.' },
+  { id: 'heart', n: '03', label: 'Heart Line', color: 'var(--ritual)', art: asset('/art/palm_heart_line_highlighted.png'), blurb: 'Your emotional weather — how you attach, express affection, and hold or share what you feel.' },
+  { id: 'fate', n: '04', label: 'Fate Line', color: 'var(--gold-deep)', art: asset('/art/palm_fate_line_highlighted.png'), blurb: 'Your relationship with direction and responsibility — the thread of purpose in your working life.' },
+  { id: 'sun', n: '05', label: 'Sun Line', color: 'var(--marigold)', art: asset('/art/palm_sun_line_highlighted.png'), blurb: 'Creativity, confidence, and your relationship with being seen — the warmth others remember.' },
+  { id: 'mercury', n: '06', label: 'Mercury Line', color: 'var(--turmeric)', art: asset('/art/palm_mercury_line_highlighted.png'), blurb: 'Communication, business instinct, and social intelligence — a quick, shrewd read of people.' },
 ]
 
 function StickyHand() {
@@ -105,7 +105,7 @@ export default function Home() {
             <CandleGlow className="inset-0 scale-125" />
             <motion.div initial={{ opacity: 0, scale: 0.9, rotate: 6 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}>
               <div className="relative mx-auto w-[72%] max-w-[20rem] overflow-hidden rounded-[1.5rem] border border-gold-antique/45 shadow-paper-lg lg:max-w-none lg:w-full">
-                <img src="/art/hero-poster.png" alt="Bengali palm reading — an illustrated open hand among jasmine flowers" className="h-auto w-full" />
+                <img src={asset('/art/hero-poster.png')} alt="Bengali palm reading — an illustrated open hand among jasmine flowers" className="h-auto w-full" />
                 <span className="pointer-events-none absolute inset-0 rounded-[1.5rem] ring-1 ring-inset ring-gold-antique/30" />
               </div>
             </motion.div>

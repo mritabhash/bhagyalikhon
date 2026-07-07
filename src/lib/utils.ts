@@ -1,5 +1,11 @@
 import { clsx, type ClassValue } from 'clsx'
 
+// Public-folder assets referenced from JS need the Vite base prefix by hand
+// (Vite only rewrites URLs in index.html and CSS, not string literals in JSX).
+export function asset(path: string): string {
+  return import.meta.env.BASE_URL + path.replace(/^\//, '')
+}
+
 /** Tailwind-friendly class merge. */
 export function cn(...inputs: ClassValue[]): string {
   return clsx(inputs)

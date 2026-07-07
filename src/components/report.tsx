@@ -1,7 +1,7 @@
 import type { ReadingSection, NumerologyChart, ReadingInput } from '../lib/types'
 import { Reveal, Kicker } from './ui'
 import { InkStroke, AlponaDivider, AlponaCorner, AlponaMandala } from './ornaments'
-import { formatLongDate, firstName } from '../lib/utils'
+import { asset, formatLongDate, firstName } from '../lib/utils'
 
 export function ReportSectionView({ section, showDivider = true }: { section: ReadingSection; showDivider?: boolean }) {
   return (
@@ -143,12 +143,12 @@ function PrintDivider({ className, width = 380 }: { className?: string; width?: 
 
 // The illustrated palm with the matching line highlighted, shown beside each line section
 const PRINT_LINE_ART: Record<string, string> = {
-  lifeline: '/art/palm_life_line_highlighted.png',
-  headline: '/art/palm_head_line_highlighted.png',
-  heartline: '/art/palm_heart_line_highlighted.png',
-  fateline: '/art/palm_fate_line_highlighted.png',
-  sunline: '/art/palm_sun_line_highlighted.png',
-  mercuryline: '/art/palm_mercury_line_highlighted.png',
+  lifeline: asset('/art/palm_life_line_highlighted.png'),
+  headline: asset('/art/palm_head_line_highlighted.png'),
+  heartline: asset('/art/palm_heart_line_highlighted.png'),
+  fateline: asset('/art/palm_fate_line_highlighted.png'),
+  sunline: asset('/art/palm_sun_line_highlighted.png'),
+  mercuryline: asset('/art/palm_mercury_line_highlighted.png'),
 }
 
 function PrintPart({ title, sections }: { title: string; sections: ReadingSection[] }) {
@@ -245,7 +245,7 @@ export function PrintDocument({ input, chart, reading }: { input: ReadingInput; 
         <p className="mt-3 font-sans text-[0.7rem] font-bold uppercase tracking-[0.35em] text-[color:var(--sindoor)]">Bhagyalikhon</p>
         <p className="font-bengali mt-1 text-lg text-[color:var(--sindoor)]">ভাগ্যলিখন</p>
         <img
-          src="/art/palm-hand.png"
+          src={asset('/art/palm-hand.png')}
           alt="An illustrated open palm and its lines"
           className="mt-6 h-[68mm] w-auto"
         />
