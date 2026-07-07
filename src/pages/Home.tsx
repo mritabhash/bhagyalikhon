@@ -31,9 +31,9 @@ function StickyHand() {
           <Kicker className="justify-center">The reading begins with your hand</Kicker>
           <h2 className="mx-auto mt-3 max-w-2xl font-serif text-4xl leading-tight text-heading sm:text-5xl">Every line, a quiet language</h2>
         </Reveal>
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div className="self-start lg:sticky lg:top-28">
-            <div className="relative mx-auto max-w-sm">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-10">
+          <div className="sticky top-20 z-10 self-start border-b border-parchment bg-paper/95 py-3 backdrop-blur-sm lg:top-28 lg:border-0 lg:bg-transparent lg:py-0 lg:backdrop-blur-none">
+            <div className="relative mx-auto max-w-[11rem] sm:max-w-sm">
               <CandleGlow className="inset-4" />
               {/* all six stacked so each is already loaded when its blurb scrolls in */}
               <div className="relative aspect-[1122/1402] w-full">
@@ -50,11 +50,11 @@ function StickyHand() {
                 ))}
               </div>
             </div>
-            <div className="mt-4 text-center">
-              <span className="font-serif text-2xl" style={{ color: info?.color }}>{info?.label}</span>
+            <div className="mt-2 text-center lg:mt-4">
+              <span className="font-serif text-xl lg:text-2xl" style={{ color: info?.color }}>{info?.label}</span>
             </div>
           </div>
-          <div className="space-y-[36vh] py-[10vh]">
+          <div className="space-y-[26vh] py-[8vh] lg:space-y-[36vh] lg:py-[10vh]">
             {HOME_LINES.map((l) => (
               <motion.div key={l.id} onViewportEnter={() => setActive(l.id)} viewport={{ margin: '-45% 0px -45% 0px' }} className="max-w-md">
                 <span className="font-serif text-5xl text-parchment-deep">{l.n}</span>
