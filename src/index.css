@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Palette mirrored as CSS vars for SVG + inline use */
+  --paper: #fbf6ec;
+  --ivory: #f5ebd8;
+  --parchment: #eaddbf;
+  --parchment-deep: #dec99f;
+  --ritual: #8c1c13;
+  --ritual-deep: #6b1410;
+  --sindoor: #c02a22;
+  --sindoor-light: #d5473b;
+  --alta: #b23a48;
+  --alta-soft: #cb8088;
+  --marigold: #e8a317;
+  --marigold-light: #f2c555;
+  --turmeric: #ce8a18;
+  --brass: #b8912f;
+  --gold: #c6a32e;
+  --gold-antique: #b08d2e;
+  --gold-deep: #9e7c22;
+  --ink: #3b2a1e;
+  --ink-soft: #5e4a38;
+  --ink-muted: #8a745c;
+  --heading: #5a1e14;
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-serif text-heading;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: rgba(192, 42, 34, 0.16);
+    color: var(--ritual-deep);
+  }
+
+  /* Scrollbar — warm and quiet */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(176, 141, 46, 0.5) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--gold-antique), var(--brass));
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--sindoor);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  input, textarea, select, button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  /* Eyebrow / kicker label */
+  .kicker {
+    @apply inline-flex items-center gap-2 font-sans text-[0.7rem] font-semibold uppercase tracking-ritual text-sindoor;
+  }
+
+  /* Paper card */
+  .card-paper {
+    @apply relative rounded-2xl border border-parchment bg-paper-50 shadow-paper;
+  }
+
+  /* Long-form report typography */
+  .report-prose {
+    @apply font-report text-ink;
+    font-size: 1.05rem;
+    line-height: 1.85;
+  }
+  .report-prose p {
+    margin-bottom: 1.05em;
+    max-width: 68ch;
+  }
+  .report-prose p:last-child {
+    margin-bottom: 0;
+  }
+  .report-prose strong {
+    @apply text-ritual;
+    font-weight: 600;
+  }
+  .report-prose em {
+    color: var(--ink-soft);
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    background: linear-gradient(100deg, #9e7c22, #c6a32e 40%, #f2c555 55%, #c6a32e 70%, #9e7c22);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-red-ink {
+    background: linear-gradient(100deg, #6b1410, #8c1c13 45%, #c02a22 60%, #8c1c13);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  /* Faint warm paper grain */
+  .paper-grain {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(176, 141, 46, 0.05) 0, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(192, 42, 34, 0.04) 0, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(140, 28, 19, 0.02) 0, transparent 60%);
+  }
+  /* Alpona dotted field */
+  .bg-alpona-dots {
+    background-image: radial-gradient(rgba(176, 141, 46, 0.16) 1px, transparent 1.4px);
+    background-size: 26px 26px;
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+  .draw-path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  .will-anim {
+    will-change: transform, opacity;
+  }
+}
+
+/* Reduced motion — honour the user's preference site-wide */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Motion opt-out via data attribute on <html> (user preference toggle) */
+html[data-motion='off'] *,
+html[data-motion='off'] *::before,
+html[data-motion='off'] *::after {
+  animation: none !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* Print — premium report */
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+  }
+  html,
+  body {
+    background: #fdfaf3 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  /* When a PrintDocument portal is mounted, print only it — the on-screen app
+     (navbar, footer, scroll-revealed report) would otherwise print on top of it,
+     half-invisible mid-animation. */
+  body.has-print-doc #root {
+    display: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-block {
+    display: block !important;
+  }
+  .page-break {
+    break-before: page;
+  }
+  .avoid-break {
+    break-inside: avoid;
+  }
+}
+
+/* Illustrated art blends into the paper — no hard edges */
+.art-feather {
+  -webkit-mask-image: radial-gradient(ellipse 78% 84% at 50% 46%, #000 56%, transparent 100%);
+  mask-image: radial-gradient(ellipse 78% 84% at 50% 46%, #000 56%, transparent 100%);
+}
